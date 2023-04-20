@@ -16,7 +16,7 @@ class ChatListScreen extends StatefulWidget implements Screen {
   State<ChatListScreen> createState() => _ChatListScreenState();
 
   @override
-  final int bottomNavigationBarButtonIndex = 1;
+  final int bottomNavigationBarButtonIndex = 0;
 
   @override
   String get appBarTitle => 'Живой чат';

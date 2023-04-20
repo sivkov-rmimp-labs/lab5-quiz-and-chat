@@ -63,10 +63,10 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-Screen quizScreen = const QuizInitialScreen();
 Screen chatScreen = const ChatListScreen();
+Screen quizScreen = const QuizInitialScreen();
 
-final currentScreenListenable = ValueNotifier<Screen>(quizScreen);
+final currentScreenListenable = ValueNotifier<Screen>(chatScreen);
 
 final quizItems = [
   const QuizItem(
@@ -167,19 +167,19 @@ class _MyHomePageState extends State<MyHomePage> {
             currentIndex: currentScreenListenable.value.bottomNavigationBarButtonIndex,
             onTap: (itemIndex) {
               if (itemIndex == 0) {
-                currentScreenListenable.value = quizScreen;
-              } else if (itemIndex == 1) {
                 currentScreenListenable.value = chatScreen;
+              } else if (itemIndex == 1) {
+                currentScreenListenable.value = quizScreen;
               }
             },
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.quiz),
-                label: 'Викторина',
-              ),
-              BottomNavigationBarItem(
                 icon: Icon(Icons.chat),
                 label: 'Чат',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.quiz),
+                label: 'Викторина',
               ),
             ],
           ),
@@ -192,8 +192,8 @@ class _MyHomePageState extends State<MyHomePage> {
 void changeScreen(Screen newScreen) {
   currentScreenListenable.value = newScreen;
   if (newScreen.bottomNavigationBarButtonIndex == 0) {
-    quizScreen = newScreen;
-  } else if (newScreen.bottomNavigationBarButtonIndex == 1) {
     chatScreen = newScreen;
+  } else if (newScreen.bottomNavigationBarButtonIndex == 1) {
+    quizScreen = newScreen;
   }
 }

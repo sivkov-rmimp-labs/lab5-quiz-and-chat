@@ -16,7 +16,7 @@ class QuizScreen extends StatefulWidget implements Screen {
   State<QuizScreen> createState() => _QuizScreenState();
 
   @override
-  final int bottomNavigationBarButtonIndex = 0;
+  final int bottomNavigationBarButtonIndex = 1;
 
   @override
   String get appBarTitle => 'Викторина';
