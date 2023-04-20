@@ -31,11 +31,15 @@ class _QuizInitialScreenState extends State<QuizInitialScreen> {
             'Предлагаем вам сыграть в нашу юбилейную викторину, ответьте на десять вопросов о лисах и станьте победителем',
             style: TextStyle(fontSize: 16),
           ),
-          MyFilledButton(
-            title: 'Начать игру',
-            onClick: () {
-              changeScreen(const QuizScreen());
-            },
+          const SizedBox(height: 16),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: MyFilledButton(
+              title: 'Начать игру',
+              onClick: () {
+                changeScreen(const QuizScreen());
+              },
+            ),
           ),
         ],
       ),
