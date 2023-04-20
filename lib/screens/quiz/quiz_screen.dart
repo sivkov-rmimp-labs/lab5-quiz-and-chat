@@ -46,8 +46,32 @@ class _QuizScreenState extends State<QuizScreen> {
       padding: const EdgeInsets.all(20),
       child: Column(
         children: [
-          Text('Вопрос ${currentQuizItemIndex + 1}/${quizItems.length}'),
-          Text(currentQuizItem.question),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+                  child: Text(
+                    'Вопрос ${currentQuizItemIndex + 1}/${quizItems.length}',
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              currentQuizItem.question,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: GridView(
