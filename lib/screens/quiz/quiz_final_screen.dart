@@ -30,18 +30,21 @@ class _QuizFinalScreenState extends State<QuizFinalScreen> {
       padding: const EdgeInsets.all(20),
       child: Column(
         children: [
-          const Text(
-            '🎉',
-            style: TextStyle(fontSize: 72),
+          Padding(
+            padding: const EdgeInsets.all(32),
+            child: Image.asset('assets/tada.png', width: 130),
           ),
           const Text(
-            'Поздравляем!',
-            style: TextStyle(fontSize: 26),
+            'Константин Константинович, поздравляем!',
+            style: TextStyle(fontSize: 34),
+            textAlign: TextAlign.center,
           ),
+          const SizedBox(height: 16),
           Text(
             'Вы ответили на ${widget.correctlyAnsweredQuestionCount.decline('вопрос', 'вопроса', 'вопросов')} из ${quizItems.length}.\n'
-            'Можно сказать, что вы хорошо знаете нашу компанию!',
-            style: const TextStyle(fontSize: 16),
+            'Можно сказать, что вы хорошо знаете нашу компанию',
+            style: const TextStyle(fontSize: 18),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
