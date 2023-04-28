@@ -87,12 +87,16 @@ class _QuizScreenState extends State<QuizScreen> {
                     (e, i) => QuizAnswerButton(
                       title: e,
                       onTap: () {
+                        if (selectedButtonIndex >= 0) {
+                          return; // can't change answer
+                        }
                         setState(() {
                           selectedButtonIndex = i;
                           isSelectedAnswerCorrect = e == currentQuizItemCorrectAnswer;
                         });
                       },
-                      chosen: i == selectedButtonIndex,
+                      isChosen: i == selectedButtonIndex,
+                      isCorrect: isSelectedAnswerCorrect,
                     ),
                   )
                   .toList(),

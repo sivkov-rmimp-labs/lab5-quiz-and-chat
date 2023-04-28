@@ -3,10 +3,16 @@ import 'package:lab5_quiz_and_chat/extensions.dart';
 
 class QuizAnswerButton extends StatefulWidget {
   final String title;
-  final bool chosen;
+  final bool isChosen;
+  final bool isCorrect;
   final void Function()? onTap;
 
-  const QuizAnswerButton({Key? key, required this.title, required this.chosen, this.onTap}) : super(key: key);
+  const QuizAnswerButton({Key? key, required this.title, required this.isChosen, required this.isCorrect, this.onTap}) : super(key: key);
+
+  static const correctColor = Color.fromRGBO(87, 141, 52, 1);
+  static const incorrectColor = Color.fromRGBO(160, 21, 45, 1);
+  Color get color => isCorrect ? correctColor : incorrectColor;
+
 
   @override
   State<QuizAnswerButton> createState() => _QuizAnswerButtonState();
@@ -18,9 +24,9 @@ class _QuizAnswerButtonState extends State<QuizAnswerButton> {
     return Stack(
       children: [
         Material(
-          shape: widget.chosen
+          shape: widget.isChosen
               ? RoundedRectangleBorder(
-                  side: const BorderSide(color: Color.fromRGBO(87, 141, 52, 1), width: 3),
+                  side: BorderSide(color: widget.color, width: 3),
                   borderRadius: BorderRadius.circular(15),
                 )
               : RoundedRectangleBorder(
@@ -33,14 +39,14 @@ class _QuizAnswerButtonState extends State<QuizAnswerButton> {
             child: Center(child: Text(widget.title)),
           ),
         ),
-        if (widget.chosen)
+        if (widget.isChosen)
           Positioned(
             top: 0,
             right: 0,
             child: Container(
-              decoration: const BoxDecoration(
-                color: Color.fromRGBO(87, 141, 52, 1),
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: widget.color,
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(15),
                   topRight: Radius.circular(15),
                 ),
